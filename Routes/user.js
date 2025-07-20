@@ -60,7 +60,7 @@ userRouter.post ('/signup', async function (req, res) {
       msg: 'User already exists',
     });
   }
-});
+}); 
 
 userRouter.post ('/signin', async function (req, res) {
   const {email, password} = req.body;
