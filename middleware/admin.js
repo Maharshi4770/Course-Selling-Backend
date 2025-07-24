@@ -3,8 +3,10 @@ const { JWT_ADMIN_SECRET } = require('../config')
 
 function adminmiddleware(req,res,next){
     const token = req.headers.token;
+    let decoded;
     try{
-        const decoded = jwt.verify(token, JWT_ADMIN_SECRET)
+        decoded = jwt.verify(token, JWT_ADMIN_SECRET)
+        console.log(decoded)
     }catch(e){
         return res.json({msg: 'Invalid or expired token'})
     }
