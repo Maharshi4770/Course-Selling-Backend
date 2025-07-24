@@ -3,7 +3,7 @@ const { usermiddleware } = require('../middleware/user')
 const {purchaseModel, courseModel}  = require('../db')
 const courseRouter = Router()
 
-//Should chekc that user has actually paid the price 
+//Should check that user has actually paid the price 
 courseRouter.post("/purchase",usermiddleware,async function(req,res){
     const userId = req.userId;
     const courseId = req.body.courseId;

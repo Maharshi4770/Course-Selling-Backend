@@ -100,7 +100,6 @@ userRouter.get ('/purchases',usermiddleware, async function (req, res) {
   const purchases = await purchaseModel.find({
     userId,
   })
-  console.log(userId);
   let purchasedID = [];
 
   for(let i=0;i<purchases.length;i++){
