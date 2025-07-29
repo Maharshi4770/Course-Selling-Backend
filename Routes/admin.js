@@ -6,7 +6,6 @@ const adminRouter = Router();
 const { z } = require('zod')
 const bcrypt = require('bcrypt')
 const {adminmiddleware} = require('../middleware/admin')
-const mongoose = require('mongoose')
 
 adminRouter.post("/signup", async function (req, res) {
 

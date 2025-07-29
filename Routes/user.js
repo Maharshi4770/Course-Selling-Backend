@@ -4,10 +4,10 @@ const {z} = require ('zod');
 const mongoose = require ('mongoose');
 const {userModel, courseModel, purchaseModel} = require ('../db');
 const userRouter = Router ();
-const {JWT_USER_SECRET} = require("../config")
+const {JWT_USER_SECRET} = require("../config");
 const {string, email} = require ('zod/v4');
 const bcrypt = require ('bcrypt');
-const { usermiddleware } = require('../middleware/user')
+const { usermiddleware } = require('../middleware/user');
 
 mongoose.connect ('mongodb://localhost:27017/CourseSelling');
 
@@ -96,20 +96,20 @@ userRouter.post ('/signin', async function (req, res) {
 
 userRouter.get ('/purchases',usermiddleware, async function (req, res) {
   const userId = req.userId;
- 
+
   const purchases = await purchaseModel.find({
     userId,
   })
   let purchasedID = [];
-
+                      
   for(let i=0;i<purchases.length;i++){
     purchasedID.push(purchases[i].courseId)
   }
 
   const courseData = await courseModel.find({
     _id: { $in: purchases.map(x=>x.courseId)}
-    
   })
+
   res.json ({
     purchases,
     courseData
